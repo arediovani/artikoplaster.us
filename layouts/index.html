@@ -1,0 +1,353 @@
+{{ define "main" }}
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl md:text-3xl font-serif font-semibold">SS Finishes</a>
+        
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex gap-8 items-center">
+            {{ range .Site.Menus.main }}
+            <li>
+                <a href="{{ .URL }}" class="text-sm font-medium tracking-wider uppercase hover:text-bronze transition-colors duration-300">
+                    {{ .Name }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-2xl">
+            ☰
+        </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden mt-6 pb-4">
+        <ul class="flex flex-col gap-4">
+            {{ range .Site.Menus.main }}
+            <li>
+                <a href="{{ .URL }}" class="text-sm font-medium tracking-wider uppercase hover:text-bronze transition-colors duration-300 mobile-menu-link">
+                    {{ .Name }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>
+
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+</script>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center texture-overlay overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-stone rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-sage rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-12 py-32 text-center">
+        <h1 class="heading-xl font-serif mb-8 fade-in-up">
+            Artisan Venetian<br>Plaster Finishes
+        </h1>
+        
+        <p class="text-lg md:text-xl text-stone max-w-2xl mx-auto mb-12 fade-in-up stagger-2 leading-relaxed">
+            Creating beautiful, high-quality finishes with close attention to detail. 
+            Serving New York and beyond with handcrafted excellence.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up stagger-3">
+            <a href="#contact" class="btn-primary">Get In Touch</a>
+            <a href="#gallery" class="btn-primary" style="background: transparent; color: var(--color-charcoal);">View Our Work</a>
+        </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 fade-in stagger-4">
+        <div class="w-6 h-10 border-2 border-charcoal rounded-full flex justify-center">
+            <div class="w-1 h-2 bg-charcoal rounded-full mt-2 animate-bounce"></div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-24 md:py-32 bg-white">
+    <div class="max-w-6xl mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in-up">
+                <h2 class="heading-md font-serif mb-6">Our Mission</h2>
+                <div class="decorative-line"></div>
+                <p class="text-lg text-stone leading-relaxed mb-6">
+                    Our mission is to create beautiful, high-quality Venetian plaster finishes while making every client feel confident and cared for. We are dedicated to delivering unique, handcrafted work with close attention to detail.
+                </p>
+                <p class="text-lg text-stone leading-relaxed">
+                    Our professional, trained, and qualified team works closely with each client to ensure a smooth process and results that truly reflect their vision. Quality, trust, and lasting beauty are at the heart of everything we do.
+                </p>
+            </div>
+            
+            <div class="fade-in-up stagger-2">
+                <div class="bg-marble p-8 md:p-12 rounded-sm">
+                    <h3 class="text-2xl font-serif mb-6">Why Choose Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-bronze mt-1">✦</span>
+                            <span class="text-stone">Professional, trained, and qualified team</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-bronze mt-1">✦</span>
+                            <span class="text-stone">Unique, handcrafted finishes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-bronze mt-1">✦</span>
+                            <span class="text-stone">Close attention to detail</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-bronze mt-1">✦</span>
+                            <span class="text-stone">Collaborative process with clients</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-bronze mt-1">✦</span>
+                            <span class="text-stone">Commitment to quality and trust</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-24 md:py-32 bg-cream texture-overlay">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="heading-md font-serif mb-6">Our Services</h2>
+            <div class="decorative-line mx-auto"></div>
+            <p class="text-lg text-stone max-w-2xl mx-auto mt-6">
+                A wide range of decorative finishes to meet your needs
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card fade-in-up stagger-1">
+                <h3 class="text-2xl font-serif mb-4">Venetian Plaster</h3>
+                <p class="text-stone">Classic Italian technique creating smooth, polished marble-like surfaces with depth and luminosity.</p>
+            </div>
+            
+            <div class="service-card fade-in-up stagger-2">
+                <h3 class="text-2xl font-serif mb-4">Marmorino</h3>
+                <p class="text-stone">Traditional lime-based plaster with a natural stone appearance and exceptional durability.</p>
+            </div>
+            
+            <div class="service-card fade-in-up stagger-3">
+                <h3 class="text-2xl font-serif mb-4">Tadelakt</h3>
+                <p class="text-stone">Waterproof Moroccan plaster perfect for bathrooms and wet areas with a silky, soapstone finish.</p>
+            </div>
+            
+            <div class="service-card fade-in-up stagger-4">
+                <h3 class="text-2xl font-serif mb-4">High Polish Marble Finishes</h3>
+                <p class="text-stone">Luxurious, mirror-like finishes that capture and reflect light beautifully.</p>
+            </div>
+            
+            <div class="service-card fade-in-up stagger-5">
+                <h3 class="text-2xl font-serif mb-4">Multi-Layered Textures</h3>
+                <p class="text-stone">Complex, dimensional surfaces created through multiple layers and techniques.</p>
+            </div>
+            
+            <div class="service-card fade-in-up stagger-6">
+                <h3 class="text-2xl font-serif mb-4">Decorative Wall Treatments</h3>
+                <p class="text-stone">Custom designs including stenciling, limewash paint, and artistic applications.</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-16 fade-in-up">
+            <a href="/samples" class="btn-primary">View Sample Work</a>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="py-24 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="heading-md font-serif mb-6">Project Gallery</h2>
+            <div class="decorative-line mx-auto"></div>
+            <p class="text-lg text-stone max-w-2xl mx-auto mt-6">
+                Recent projects showcasing our craftsmanship
+            </p>
+        </div>
+        
+        <div class="gallery-grid">
+            <!-- Latest 4 Projects -->
+            <div class="gallery-item fade-in-up stagger-1" onclick="openModal('/images/Hudson Yards Manhattan (1).jpeg')">
+                <img src="/images/Hudson Yards Manhattan (1).jpeg" alt="Hudson Yards Manhattan" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Hudson Yards Manhattan</h3>
+                    <p class="text-sm opacity-90">Luxury Condo</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up stagger-2" onclick="openModal('/images/Fifth Avenue Manhattan.jpeg')">
+                <img src="/images/Fifth Avenue Manhattan.jpeg" alt="Fifth Avenue Manhattan" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Fifth Avenue</h3>
+                    <p class="text-sm opacity-90">High-End Retail</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up stagger-3" onclick="openModal('/images/Downtown Manhattan.jpeg')">
+                <img src="/images/Downtown Manhattan.jpeg" alt="Downtown Manhattan Project" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Downtown Manhattan</h3>
+                    <p class="text-sm opacity-90">Luxury Residential</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up stagger-4" onclick="openModal('/images/Miami Design District Florida (1).jpeg')">
+                <img src="/images/Miami Design District Florida (1).jpeg" alt="Miami Design District" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Miami Design District</h3>
+                    <p class="text-sm opacity-90">Showroom</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-16 fade-in-up">
+            <a href="/gallery" class="btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24 md:py-32 bg-charcoal text-cream texture-overlay">
+    <div class="max-w-6xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="heading-md font-serif mb-6">Get In Touch</h2>
+            <div class="decorative-line mx-auto" style="background: var(--color-bronze);"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+            <!-- Contact Information -->
+            <div class="fade-in-up stagger-2">
+                <h3 class="text-2xl font-serif mb-8">Contact Information</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-bronze font-medium mb-2 uppercase text-sm tracking-wider">Phone</h4>
+                        <a href="tel:{{ .Site.Params.phone }}" class="text-xl hover:text-bronze transition-colors">
+                            {{ .Site.Params.phone }}
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-bronze font-medium mb-2 uppercase text-sm tracking-wider">Email</h4>
+                        <a href="mailto:{{ .Site.Params.email }}" class="text-xl hover:text-bronze transition-colors">
+                            {{ .Site.Params.email }}
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-bronze font-medium mb-2 uppercase text-sm tracking-wider">Location</h4>
+                        <p class="text-xl">New York Area</p>
+                        <p class="text-stone mt-1">Services offered statewide</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-bronze font-medium mb-2 uppercase text-sm tracking-wider">Business Hours</h4>
+                        <div class="text-stone space-y-1">
+                            <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
+                            <p>Saturday: By Appointment</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-bronze font-medium mb-2 uppercase text-sm tracking-wider">Follow Us</h4>
+                        <div class="flex gap-4 mt-3">
+                            <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener" class="text-2xl hover:text-bronze transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener" class="text-2xl hover:text-bronze transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="fade-in-up stagger-3">
+                <h3 class="text-2xl font-serif mb-8">Send Us a Message</h3>
+                
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2 text-stone">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-transparent border border-stone/30 focus:border-bronze outline-none transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2 text-stone">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-transparent border border-stone/30 focus:border-bronze outline-none transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium mb-2 text-stone">Phone</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-transparent border border-stone/30 focus:border-bronze outline-none transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2 text-stone">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-transparent border border-stone/30 focus:border-bronze outline-none transition-colors resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-charcoal text-cream py-12 border-t border-stone/20">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 text-center">
+        <p class="text-2xl font-serif mb-4">SS Finishes</p>
+        <p class="text-stone mb-6">Venetian Plaster Specialists</p>
+        <p class="text-sm text-stone">
+            &copy; {{ now.Format "2006" }} SS Finishes. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<script>
+    // Contact form handling (you'll need to integrate with your backend)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Here you would typically send the data to your server
+        // For now, we'll just show an alert
+        alert('Thank you for your message! We will get back to you soon.');
+        this.reset();
+    });
+</script>
+
+{{ end }}

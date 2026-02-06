@@ -1,0 +1,362 @@
+{{ define "main" }}
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl md:text-3xl font-serif font-semibold">SS Finishes</a>
+        
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex gap-8 items-center">
+            {{ range .Site.Menus.main }}
+            <li>
+                <a href="{{ .URL }}" class="text-sm font-medium tracking-wider uppercase hover:text-bronze transition-colors duration-300">
+                    {{ .Name }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-2xl">
+            ☰
+        </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden mt-6 pb-4">
+        <ul class="flex flex-col gap-4">
+            {{ range .Site.Menus.main }}
+            <li>
+                <a href="{{ .URL }}" class="text-sm font-medium tracking-wider uppercase hover:text-bronze transition-colors duration-300 mobile-menu-link">
+                    {{ .Name }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>
+
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    document.querySelectorAll('.mobile-menu-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+</script>
+
+<!-- Page Header -->
+<section class="pt-32 pb-16 bg-cream texture-overlay">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center fade-in-up">
+            <h1 class="heading-lg font-serif mb-6">Complete Project Gallery</h1>
+            <div class="decorative-line mx-auto"></div>
+            <p class="text-lg text-stone max-w-2xl mx-auto mt-6">
+                Explore our full portfolio of Venetian plaster projects across New York and beyond
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Full Gallery -->
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="gallery-grid">
+            <!-- Brooklyn Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Brooklyn NY.jpeg')">
+                <img src="/images/Brooklyn NY.jpeg" alt="Brooklyn, NY Project" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Brooklyn, NY</h3>
+                    <p class="text-sm opacity-90">Venetian Plaster Installation</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Brooklyn.jpeg')">
+                <img src="/images/Brooklyn.jpeg" alt="Brooklyn Project" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Brooklyn</h3>
+                    <p class="text-sm opacity-90">Custom Finish</p>
+                </div>
+            </div>
+            
+            <!-- Manhattan Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Downtown Manhattan.jpeg')">
+                <img src="/images/Downtown Manhattan.jpeg" alt="Downtown Manhattan Project" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Downtown Manhattan</h3>
+                    <p class="text-sm opacity-90">Luxury Residential</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Downtown Manhattan 2.jpeg')">
+                <img src="/images/Downtown Manhattan 2.jpeg" alt="Downtown Manhattan Project 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Downtown Manhattan</h3>
+                    <p class="text-sm opacity-90">Commercial Space</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Fifth Avenue Manhattan.jpeg')">
+                <img src="/images/Fifth Avenue Manhattan.jpeg" alt="Fifth Avenue Manhattan" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Fifth Avenue</h3>
+                    <p class="text-sm opacity-90">High-End Retail</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Fifth Avenue Manhattan 2.jpeg')">
+                <img src="/images/Fifth Avenue Manhattan 2.jpeg" alt="Fifth Avenue Manhattan 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Fifth Avenue</h3>
+                    <p class="text-sm opacity-90">Boutique Interior</p>
+                </div>
+            </div>
+            
+            <!-- Hudson Yards Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Hudson Yard NYC (1).jpeg')">
+                <img src="/images/Hudson Yard NYC (1).jpeg" alt="Hudson Yards NYC" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Hudson Yards</h3>
+                    <p class="text-sm opacity-90">Modern Development</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Hudson Yard NYC (2).jpeg')">
+                <img src="/images/Hudson Yard NYC (2).jpeg" alt="Hudson Yards NYC 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Hudson Yards</h3>
+                    <p class="text-sm opacity-90">Penthouse Suite</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Hudson Yards Manhattan (1).jpeg')">
+                <img src="/images/Hudson Yards Manhattan (1).jpeg" alt="Hudson Yards Manhattan" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Hudson Yards Manhattan</h3>
+                    <p class="text-sm opacity-90">Luxury Condo</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Hudson Yards Manhattan (2).jpeg')">
+                <img src="/images/Hudson Yards Manhattan (2).jpeg" alt="Hudson Yards Manhattan 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Hudson Yards Manhattan</h3>
+                    <p class="text-sm opacity-90">Designer Showcase</p>
+                </div>
+            </div>
+            
+            <!-- Manhattan Other -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Manhattan NYC (1).jpeg')">
+                <img src="/images/Manhattan NYC (1).jpeg" alt="Manhattan NYC" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Manhattan</h3>
+                    <p class="text-sm opacity-90">Residential Project</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Manhattan NYC (2).jpeg')">
+                <img src="/images/Manhattan NYC (2).jpeg" alt="Manhattan NYC 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Manhattan</h3>
+                    <p class="text-sm opacity-90">Custom Installation</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Manhattan Ny.jpeg')">
+                <img src="/images/Manhattan Ny.jpeg" alt="Manhattan NY" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Manhattan, NY</h3>
+                    <p class="text-sm opacity-90">Marmorino Finish</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Manhattan prap.jpeg')">
+                <img src="/images/Manhattan prap.jpeg" alt="Manhattan Project" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Manhattan</h3>
+                    <p class="text-sm opacity-90">Decorative Treatment</p>
+                </div>
+            </div>
+            
+            <!-- Las Vegas Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Las Vegas, Nevada (1).jpeg')">
+                <img src="/images/Las Vegas, Nevada (1).jpeg" alt="Las Vegas Nevada" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Las Vegas, Nevada</h3>
+                    <p class="text-sm opacity-90">Resort Property</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Las Vegas, Nevada (2).jpeg')">
+                <img src="/images/Las Vegas, Nevada (2).jpeg" alt="Las Vegas Nevada 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Las Vegas, Nevada</h3>
+                    <p class="text-sm opacity-90">High Polish Finish</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Las Vegas, Nevada (3).jpeg')">
+                <img src="/images/Las Vegas, Nevada (3).jpeg" alt="Las Vegas Nevada 3" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Las Vegas, Nevada</h3>
+                    <p class="text-sm opacity-90">Casino Interior</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Las Vegas, Nevada (4).jpeg')">
+                <img src="/images/Las Vegas, Nevada (4).jpeg" alt="Las Vegas Nevada 4" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Las Vegas, Nevada</h3>
+                    <p class="text-sm opacity-90">Luxury Suite</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Las Vegas, Nevada (5).jpeg')">
+                <img src="/images/Las Vegas, Nevada (5).jpeg" alt="Las Vegas Nevada 5" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Las Vegas, Nevada</h3>
+                    <p class="text-sm opacity-90">Venetian Plaster</p>
+                </div>
+            </div>
+            
+            <!-- New York Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Long Island.jpeg')">
+                <img src="/images/Long Island.jpeg" alt="Long Island" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Long Island</h3>
+                    <p class="text-sm opacity-90">Estate Property</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Southhampton New York (1).jpeg')">
+                <img src="/images/Southhampton New York (1).jpeg" alt="Southampton New York" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Southampton, NY</h3>
+                    <p class="text-sm opacity-90">Beach House</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Southhampton New York (2).jpeg')">
+                <img src="/images/Southhampton New York (2).jpeg" alt="Southampton New York 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Southampton, NY</h3>
+                    <p class="text-sm opacity-90">Tadelakt Bathroom</p>
+                </div>
+            </div>
+            
+            <!-- Miami Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Miami Design District Florida (1).jpeg')">
+                <img src="/images/Miami Design District Florida (1).jpeg" alt="Miami Design District" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Miami Design District</h3>
+                    <p class="text-sm opacity-90">Showroom</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Miami Florida.jpeg')">
+                <img src="/images/Miami Florida.jpeg" alt="Miami Florida" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Miami, Florida</h3>
+                    <p class="text-sm opacity-90">Waterfront Residence</p>
+                </div>
+            </div>
+            
+            <!-- New Jersey Projects -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey  (1).jpeg')">
+                <img src="/images/New Jersey  (1).jpeg" alt="New Jersey" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Private Residence</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey  (2).jpeg')">
+                <img src="/images/New Jersey  (2).jpeg" alt="New Jersey 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Multi-Layer Texture</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey  (3).jpeg')">
+                <img src="/images/New Jersey  (3).jpeg" alt="New Jersey 3" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Contemporary Home</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey  (4).jpeg')">
+                <img src="/images/New Jersey  (4).jpeg" alt="New Jersey 4" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Limewash Application</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey  (5).jpeg')">
+                <img src="/images/New Jersey  (5).jpeg" alt="New Jersey 5" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Decorative Walls</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey. (1).jpeg')">
+                <img src="/images/New Jersey. (1).jpeg" alt="New Jersey Project" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Residential Interior</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/New Jersey. (2).jpeg')">
+                <img src="/images/New Jersey. (2).jpeg" alt="New Jersey Project 2" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">New Jersey</h3>
+                    <p class="text-sm opacity-90">Custom Design</p>
+                </div>
+            </div>
+            
+            <!-- Other Locations -->
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Los Angeles California.jpeg')">
+                <img src="/images/Los Angeles California.jpeg" alt="Los Angeles California" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Los Angeles, CA</h3>
+                    <p class="text-sm opacity-90">Modern Villa</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item fade-in-up" onclick="openModal('/images/Nashville, Tennessee.jpeg')">
+                <img src="/images/Nashville, Tennessee.jpeg" alt="Nashville Tennessee" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <h3 class="font-serif text-xl mb-1">Nashville, Tennessee</h3>
+                    <p class="text-sm opacity-90">Music City Project</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-16 fade-in-up">
+            <a href="/#contact" class="btn-primary">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-charcoal text-cream py-12 border-t border-stone/20">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 text-center">
+        <p class="text-2xl font-serif mb-4">SS Finishes</p>
+        <p class="text-stone mb-6">Venetian Plaster Specialists</p>
+        <p class="text-sm text-stone">
+            &copy; {{ now.Format "2006" }} SS Finishes. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+{{ end }}
