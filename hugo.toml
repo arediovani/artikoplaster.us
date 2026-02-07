@@ -6,23 +6,23 @@ title = 'Artiko - Venetian Plaster Specialists'
   description = 'Beautiful, high-quality Venetian plaster finishes in New York and beyond'
   phone = '917-664-9684'
   email = 'info@artikoplaster.us'
-  linkedin = 'https://www.linkedin.com/company/ssfinishes'
-  instagram = 'https://www.instagram.com/ssfinishes'
+  linkedin = 'https://www.linkedin.com/company/artiko_venetaion'
+  instagram = 'https://www.instagram.com/artiko_venetian/'
   
 [menu]
   [[menu.main]]
     name = 'Services'
-    url = '#services'
+    url = '/#services'
     weight = 1
   [[menu.main]]
     name = 'Gallery'
-    url = '#gallery'
+    url = '/gallery'
     weight = 2
   [[menu.main]]
     name = 'About'
-    url = '#about'
+    url = '/#about'
     weight = 3
   [[menu.main]]
     name = 'Contact'
-    url = '#contact'
+    url = '/#contact'
     weight = 4
