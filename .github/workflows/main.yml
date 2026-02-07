@@ -20,7 +20,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             # 1. Navigate to the project folder
-            cd ~/artikoplasters.us
+            cd ~/artikoplaster.us
             
             # 2. Pull the latest changes
             git pull origin main
